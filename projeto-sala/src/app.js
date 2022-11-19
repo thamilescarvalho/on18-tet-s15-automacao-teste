@@ -1,10 +1,8 @@
-
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const colaboradorasRoutes = require('./routes/colaboradorasRoutes')
 const db = require('../src/config/mongoConnect')
-
 
 const app = express()
 

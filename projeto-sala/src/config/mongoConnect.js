@@ -6,7 +6,7 @@ const connect = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }).then(() => {
-      console.log('db conectado')
+      console.log('Thamiles seu Banco de dados está conectado')
     })
     .catch((err) => {
       console.error(err);
@@ -15,5 +15,5 @@ const connect = async () => {
 };
 
 module.exports = {
-  connect,
+  connect
 };

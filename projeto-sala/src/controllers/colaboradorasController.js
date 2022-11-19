@@ -130,5 +130,4 @@ const remove = async(req, res) => {
    }
 }
 
-
 module.exports = { all, findOne, create, update, remove }
