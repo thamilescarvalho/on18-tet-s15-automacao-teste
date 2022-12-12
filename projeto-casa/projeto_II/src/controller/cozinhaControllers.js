@@ -1,29 +1,19 @@
 const mongoose = require("mongoose");
-
 const CozinhaSchema = require("../models/CozinhaSchema");
-
 const { query } = require("express");
 
 const cadastrarCozinha = async (req, res) => {
-    const { nome, cnpj, endereco, site, iniciativa_privada, bairros_que_atuam, atividades_disponiveis, pessoa_responsavel } = req.body;
     try{
-        const cozinha = new cozinhaSchema({
-            nome: nome,
-            cnpj: cnpj,
-            endereco: endereco,
-            site: site,
-            iniciativa_privada: iniciativa_privada,
-            bairros_que_atuam: bairros_que_atuam,
-            atividades_disponiveis: atividades_disponiveis,
-            pessoa_responsavel: pessoa_responsavel
+        const cozinha = new CozinhaSchema({
+            nome: req.body.nome,
+            cnpj: req.body.cnpj,
+            endereco: req.body.endereco,
+            site: req.body.site,
+            iniciativa_privada: req.body.iniciativa_privada,
+            bairros_que_atuam: req.body.bairros_que_atuam,
+            atividades_disponiveis: req.body.atividades_disponiveis,
+            pessoa_responsavel: req.body.pessoa_responsavel
         })
-        const buscarCnpj = CozinhaSchema.find({ cnpj });
-
-        if(buscarCnpj.length !== 0){
-            return res.status(400).json({
-                message: "CNPJ já cadastrado"
-            })
-        }
         const salvarCozinha = await cozinha.save();
         res.status(201).json({
             cozinha: salvarCozinha
@@ -36,12 +26,10 @@ const cadastrarCozinha = async (req, res) => {
 }
 
 const todasAsCozinhas = async (req, res) => {
-    try{
-        const cozinha = await CozinhaSchema.find({query});
-
+    try {
+        const cozinha = await CozinhaSchema.find({ query });
         res.status(200).json(cozinha)
-
-    }catch(error){
+    } catch(error) {
         res.status(500).json({
             message: error.message
         })

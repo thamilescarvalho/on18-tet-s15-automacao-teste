@@ -1,18 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const cozinhaSchema = new mongoose.Schema({
-    id: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: mongoose.Schema.Types.ObjectId
-    },
+    id: mongoose.Schema.Types.ObjectId,
     nome: {
         type: String, 
         required: true
     },
     cnpj: {
         type: Number, 
-        required: true,
-        unique: true
+        required: true
     },
     iniciativa_privada: { // boolean (sim ou não)
         type: Boolean
@@ -21,14 +17,16 @@ const cozinhaSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    bairros_que_atuam : [{
+    bairros_que_atuam : {
         type: String,
         require: true
-    }],
+    },
     site: {
         type: String
     },
-    atividades_disponiveis: [ ],
+    atividades_disponiveis: {
+        type: String
+    },
     pessoa_responsavel: {
         type: String,
         require: true

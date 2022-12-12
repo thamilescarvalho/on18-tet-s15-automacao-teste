@@ -1,11 +1,6 @@
 const express = require("express");
 const rotas = require("express").Router();
 const controller = require('../controller/cozinhaControllers');
-const userController = require('../controller/userController');
-const authController = require('../controller/authController');
-
-const { checaAutenticacao } = require('../middlewares/auth')
-
 
 rotas.post("/cadastrar", controller.cadastrarCozinha);
 

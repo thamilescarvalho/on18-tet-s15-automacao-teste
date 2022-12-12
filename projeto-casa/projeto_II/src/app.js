@@ -7,7 +7,6 @@ const cors = require('cors');
 const app = express();
 
 const database = require('./database/moogoseConnect');
-// const db = require('./config/database');
 const todasAsRotas = require('./routes/cozinhaRoutes');
 
 app.use(cors());
@@ -16,6 +15,6 @@ app.use("/cozinha", todasAsRotas)
 
 database.connect();
 
-module.exports = app
+module.exports = app;
 
 
